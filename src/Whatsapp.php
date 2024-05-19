@@ -106,7 +106,7 @@ class Whatsapp
      *
      * @throws CouldNotSendNotification
      */
-    public function sendLis(array $params): ?ResponseInterface
+    public function sendList(array $params): ?ResponseInterface
     {
         return $this->sendRequest('sendList', $params);
     }
@@ -129,6 +129,27 @@ class Whatsapp
     public function sendLocation(array $params): ?ResponseInterface
     {
         return $this->sendRequest($this->configMethods['sendLocation'] ?? 'sendLocation', $params);
+    }
+
+
+    /**
+     * Send a Link.
+     *
+     * @throws CouldNotSendNotification
+     */
+    public function sendLink(array $params): ?ResponseInterface
+    {
+        return $this->sendRequest($this->configMethods['sendLink'] ?? 'sendLink', $params);
+    }
+
+   /**
+     * Send a Buttons.
+     *
+     * @throws CouldNotSendNotification
+     */
+    public function sendLink(array $params): ?ResponseInterface
+    {
+        return $this->sendRequest($this->configMethods['sendButtons'] ?? 'sendButtons', $params);
     }
 
     /**
