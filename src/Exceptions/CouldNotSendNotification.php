@@ -24,11 +24,10 @@ class CouldNotSendNotification extends Exception
         $statusCode = $exception->getResponse()->getStatusCode();
 
         $result = json_decode($exception->getResponse()->getBody()->getContents(), false);
-        $description = $result->description ?? '';
-        $message = $result->message ?? '';
-        $error = $result->error ?? '';
+        $description = $result->description ?? $result->message ??  $result->error ?? 'no description given';
+ 
 
-        return new static("Whatsapp Api Response Error:  `{$statusCode} {$description} {$message} {$error}`", 0, $exception);
+        return new static("Whatsapp Api Response Error:  `{$statusCode} - {$description}`", 0, $exception);
     }
 
     /**
