@@ -87,7 +87,7 @@ class Whatsapp
 
     public function sendMessage(array $params): ?ResponseInterface
     {
-        return $this->sendRequest($this->configMethods['sendMessage'] ?? 'sendMessage', $params);
+        return $this->sendRequest($this->configMethods['sendMessage'] ?? 'send-text', $params);
     }
 
     /**
@@ -102,13 +102,23 @@ class Whatsapp
     }
 
     /**
-     * Send a Poll.
+     * Send a List.
      *
      * @throws CouldNotSendNotification
      */
     public function sendList(array $params): ?ResponseInterface
     {
-        return $this->sendRequest('sendList', $params);
+        return $this->sendRequest('send-list', $params);
+    }
+
+    /**
+     * Send a Poll.
+     *
+     * @throws CouldNotSendNotification
+     */
+    public function sendPoll(array $params): ?ResponseInterface
+    {
+        return $this->sendRequest('send-poll', $params);
     }
 
     /**
@@ -118,7 +128,17 @@ class Whatsapp
      */
     public function sendContact(array $params): ?ResponseInterface
     {
-        return $this->sendRequest($this->configMethods['sendContact'] ?? 'sendContact', $params);
+        return $this->sendRequest($this->configMethods['sendContact'] ?? 'send-contact', $params);
+    }
+
+    /**
+     * Send a Contacts.
+     *
+     * @throws CouldNotSendNotification
+     */
+    public function sendContacts(array $params): ?ResponseInterface
+    {
+        return $this->sendRequest($this->configMethods['sendContacts'] ?? 'send-contacts', $params);
     }
 
     /**
@@ -128,7 +148,7 @@ class Whatsapp
      */
     public function sendLocation(array $params): ?ResponseInterface
     {
-        return $this->sendRequest($this->configMethods['sendLocation'] ?? 'sendLocation', $params);
+        return $this->sendRequest($this->configMethods['sendLocation'] ?? 'send-location', $params);
     }
 
 
@@ -139,7 +159,7 @@ class Whatsapp
      */
     public function sendLink(array $params): ?ResponseInterface
     {
-        return $this->sendRequest($this->configMethods['sendLink'] ?? 'sendLink', $params);
+        return $this->sendRequest($this->configMethods['sendLink'] ?? 'send-link', $params);
     }
 
    /**
@@ -149,8 +169,9 @@ class Whatsapp
      */
     public function sendButtons(array $params): ?ResponseInterface
     {
-        return $this->sendRequest($this->configMethods['sendButtons'] ?? 'sendButtons', $params);
+        return $this->sendRequest($this->configMethods['sendButtons'] ?? 'send-buttons', $params);
     }
+
 
     /**
      * Get HttpClient.
