@@ -147,7 +147,7 @@ class Whatsapp
      *
      * @throws CouldNotSendNotification
      */
-    public function sendLink(array $params): ?ResponseInterface
+    public function sendButtons(array $params): ?ResponseInterface
     {
         return $this->sendRequest($this->configMethods['sendButtons'] ?? 'sendButtons', $params);
     }
