@@ -38,7 +38,7 @@ class WhatsappServiceProvider extends ServiceProvider
         });
 
         Notification::resolved(static function (ChannelManager $service) {
-            $service->extend('whatsapp', static function ($app) {
+            $service->extend('whatsapp-venom', static function ($app) {
                 return $app->make(WhatsappChannel::class);
             });
         });
